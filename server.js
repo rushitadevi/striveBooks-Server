@@ -7,7 +7,19 @@ server.use(bodyparser.json())
 server.use(cors())
 const books = require("./services/Index")
 
-server.use("/books", books)
+var whitelist = ['https://strivebookapiserver.herokuapp.com/', 'http://localhost:3010']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+
+server.use("/books",cors(corsOptions), books)
 
 server.listen(3010,()=>{
     console.log("I have started on port 3010")
