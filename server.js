@@ -22,6 +22,6 @@ var corsOptions = {
 
 server.use("/books",cors(corsOptions), books)
 
-server.listen(3010,()=>{
+server.listen(server.get('port'),()=>{
     console.log("I have started on port"+ server.get("port"))
 })
