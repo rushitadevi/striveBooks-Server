@@ -26,7 +26,7 @@ router.get('/',(request,response)=>{
 //get comments by book id
 router.get('/:bookid',(request,response)=>{
     
-    var buffer = fs.readFileSync("./services/comments.json");
+    var buffer = fs.readFileSync("./comments.json");
     console.log("hi")
     var content = buffer.toString()
     var oldDb=JSON.parse(content)
@@ -40,13 +40,13 @@ router.get('/:bookid',(request,response)=>{
 
 router.post("/:bookid",(req,res)=>{
     var reqBody=req.body 
-    var buffer = fs.readFileSync("./services/comments.json");
+    var buffer = fs.readFileSync("./comments.json");
     var content = buffer.toString()
     var NewDb=JSON.parse(content)
     reqBody.BookID=req.params.bookid
     reqBody.Date=new Date()
     NewDb.push(reqBody)
-    fs.writeFileSync("./services/comments.json", JSON.stringify(NewDb))
+    fs.writeFileSync("./comments.json", JSON.stringify(NewDb))
     res.send(NewDb) 
 })
 
