@@ -9,7 +9,7 @@ const books = require("./services/Index")
 server.set("port", process.env.PORT || 3450)
 //console.log(process.env.PORT)
 server.use(bodyparser.json())
-var whitelist = ['https://strivebookapiserver.herokuapp.com/', 'http://localhost:3450/']
+var whitelist = ['https://strivebookapiserver.herokuapp.com', 'http://localhost:3450']
 var corsOptions = {
   origin: function (origin, callback) {
      // console.log(origin)
