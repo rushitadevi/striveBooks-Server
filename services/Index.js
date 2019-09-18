@@ -7,7 +7,7 @@ var id=require("shortid")
 //get all books
 router.get('/',(request,response)=>{
    // console.log(request.body)
-   var buffer = fs.readFileSync("./services/books.json");
+   var buffer = fs.readFileSync("./books.json");
     console.log(buffer)
     var content = buffer.toString()
     response.send(content)
